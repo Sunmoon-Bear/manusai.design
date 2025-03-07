@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ManusAI - Minimalist AI Logo Design</title>
+    <meta name="description" content="Create minimalist black and white line-style logos with AI assistance">
+    <link rel="canonical" href="https://manusai.design">
+    <style>
+        :root {
+            --primary-color: #000;
+            --secondary-color: #fff;
+            --accent-color: #444;
+            --border-color: #ddd;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: ui-serif, LibreBaskerville, Georgia, Cambria, "Times New Roman", Times, serif;
+            line-height: 1.6;
+            color: var(--primary-color);
+            background-color: var(--secondary-color);
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            padding: 2rem 0;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 2rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin: 2rem 0 1rem;
+            font-weight: 400;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            color: var(--accent-color);
+        }
+
+        section {
+            margin-bottom: 3rem;
+        }
+
+        .logo-generator, .gallery {
+            padding: 2rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--border-color);
+            font-family: inherit;
+            font-size: 1rem;
+        }
+
+        button {
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            border: none;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            cursor: pointer;
+            font-family: inherit;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: var(--accent-color);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .gallery-item {
+            border: 1px solid var(--border-color);
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .gallery-item img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .view-more {
+            text-align: center;
+        }
+
+        footer {
+            margin-top: 3rem;
+            text-align: center;
+            padding: 1rem 0;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9rem;
+            color: var(--accent-color);
+        }
+
+        #logo-result {
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        #logo-result img {
+            max-width: 300px;
+            border: 1px solid var(--border-color);
+            padding: 1rem;
+        }
+
+        .download-btn {
+            display: inline-block;
+            margin-top: 1rem;
+        }
+
+        #loading {
+            display: none;
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-radius: 50%;
+            border-top: 4px solid var(--primary-color);
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>ManusAI Design</h1>
+        <p class="tagline">Crafting minimalist black and white logos with artificial intelligence</p>
+    </header>
+
+    <main>
+        <!-- Gallery Section - Now First -->
+        <section class="gallery">
+            <h2>Logo Gallery</h2>
+            <p>Explore minimalist logos created with ManusAI Design.</p>
+            
+            <div class="gallery-grid">
+                <!-- First Row -->
+                <div class="gallery-item">
+                    <img src="/api/placeholder/150/150" alt="Minimalist hand gesture logo">
+                    <p>Hand Gesture</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="/api/placeholder/150/150" alt="Abstract wave logo">
+                    <p>Wave Motion</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="/api/placeholder/150/150" alt="Geometric mountain logo">
+                    <p>Mountain Peak</p>
+                </div>
+                <!-- Second Row -->
+                <div class="gallery-item">
+                    <img src="/api/placeholder/150/150" alt="Minimalist leaf logo">
+                    <p>Simple Leaf</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="/api/placeholder/150/150" alt="Circle dot pattern logo">
+                    <p>Circle Pattern</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="/api/placeholder/150/150" alt="Line art face logo">
+                    <p>Line Face</p>
+                </div>
+            </div>
+            
+            <div class="view-more">
+                <button>View More Logos</button>
+            </div>
+        </section>
+        
+        <!-- Logo Generator Section - Now Second -->
+        <section class="logo-generator">
+            <h2>Generate Your Logo</h2>
+            <p>Describe your brand or concept to create a unique minimalist line-style logo.</p>
+            
+            <form id="logo-form">
+                <div class="form-group">
+                    <label for="brand-name">Brand Name</label>
+                    <input type="text" id="brand-name" required placeholder="Enter your brand name">
+                </div>
+                
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea id="description" rows="4" required placeholder="Describe your brand, concept, or the symbolism you want in your logo"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="style">Style Preference</label>
+                    <select id="style">
+                        <option value="minimal">Ultra Minimal</option>
+                        <option value="handdrawn">Hand-drawn Feel</option>
+                        <option value="geometric">Geometric</option>
+                        <option value="abstract">Abstract</option>
+                    </select>
+                </div>
+                
+                <button type="submit">Generate Logo</button>
+            </form>
+            
+            <div id="loading">
+                <div class="spinner"></div>
+                <p>Creating your minimalist logo...</p>
+            </div>
+            
+            <div id="logo-result"></div>
+        </section>
+    </main>
+
+    <section>
+        <h2>How It Works</h2>
+        <p>ManusAI combines human creativity with artificial intelligence to generate unique, minimalist logos that capture the essence of your brand.</p>
+        
+        <div style="display: flex; flex-direction: column; gap: 1.5rem; margin: 2rem 0;">
+            <div>
+                <h3>1. Describe Your Vision</h3>
+                <p>Tell us about your brand and what you're looking for in a logo.</p>
+            </div>
+            <div>
+                <h3>2. AI Generation</h3>
+                <p>Our AI processes your description to create a minimalist black and white logo.</p>
+            </div>
+            <div>
+                <h3>3. Download & Use</h3>
+                <p>Download your logo in multiple formats for immediate use.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>About ManusAI Design</h2>
+        <p>ManusAI Design merges the Latin word "manus" (hand) with artificial intelligence to create a tool that feels like an extension of your creative vision. We specialize in minimalist black and white line-style logos that are timeless, versatile, and instantly recognizable.</p>
+        <p>Our AI has been trained on thousands of minimalist designs to understand the principles of simplicity, balance, and meaningful negative space.</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 ManusAI Design. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.getElementById('logo-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Show loading spinner
+            document.getElementById('loading').style.display = 'block';
+            document.getElementById('logo-result').innerHTML = '';
+            
+            // Get form values
+            const brandName = document.getElementById('brand-name').value;
+            const description = document.getElementById('description').value;
+            const style = document.getElementById('style').value;
+            
+            // Simulate API call to AI service
+            setTimeout(function() {
+                // Hide loading spinner
+                document.getElementById('loading').style.display = 'none';
+                
+                // Display result (in a real implementation, this would come from the AI service)
+                const resultHTML = `
+                    <h3>Your Generated Logo</h3>
+                    <img src="/api/placeholder/300/300" alt="${brandName} logo">
+                    <p>Generated based on: ${description}</p>
+                    <button class="download-btn">Download Logo</button>
+                `;
+                
+                document.getElementById('logo-result').innerHTML = resultHTML;
+            }, 2000); // Simulate 2 second processing time
+        });
+        
+        // View More button functionality
+        document.querySelector('.view-more button').addEventListener('click', function() {
+            alert('Gallery page would open with more logo examples');
+            // In a real implementation, this would navigate to a gallery page
+            // window.location.href = '/gallery';
+        });
+    </script>
+</body>
+</html>
