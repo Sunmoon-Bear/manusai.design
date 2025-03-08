@@ -141,17 +141,6 @@
             text-align: center;
         }
 
-        #logo-result img {
-            max-width: 300px;
-            border: 1px solid var(--border-color);
-            padding: 1rem;
-        }
-
-        .download-btn {
-            display: inline-block;
-            margin-top: 1rem;
-        }
-
         #loading {
             display: none;
             text-align: center;
@@ -172,6 +161,134 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
+        
+        /* Additional styles */
+        .logo-container {
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid var(--border-color);
+            margin: 0 auto;
+            width: 300px;
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .logo-container svg {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        .download-btn {
+            margin: 10px 5px;
+            padding: 8px 15px;
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .download-btn:hover {
+            background-color: var(--accent-color);
+        }
+
+        /* Style selection enhancement */
+        .style-options {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .style-option {
+            border: 1px solid var(--border-color);
+            padding: 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.3s;
+            flex: 1;
+            min-width: 120px;
+        }
+
+        .style-option:hover {
+            border-color: var(--accent-color);
+        }
+
+        .style-option.selected {
+            border-color: var(--primary-color);
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+
+        .style-option svg {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 10px;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            .logo-container {
+                width: 250px;
+                height: 250px;
+            }
+            
+            .style-options {
+                flex-direction: column;
+            }
+            
+            .style-option {
+                width: 100%;
+            }
+        }
+
+        /* Gallery modal styles */
+        .gallery-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            z-index: 1000;
+            overflow: auto;
+            padding: 20px;
+        }
+
+        .gallery-content {
+            max-width: 1200px;
+            margin: 60px auto 20px;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .close-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 8px 15px;
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            border: none;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        /* Animation effects */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .logo-container, .gallery-modal {
+            animation: fadeIn 0.5s ease-in-out;
+        }
     </style>
 </head>
 <body>
@@ -181,7 +298,7 @@
     </header>
 
     <main>
-        <!-- Gallery Section - Now First -->
+        <!-- Gallery Section -->
         <section class="gallery">
             <h2>Logo Gallery</h2>
             <p>Explore minimalist logos created with ManusAI Design.</p>
@@ -189,29 +306,60 @@
             <div class="gallery-grid">
                 <!-- First Row -->
                 <div class="gallery-item">
-                    <img src="/api/placeholder/150/150" alt="Minimalist hand gesture logo">
-                    <p>Hand Gesture</p>
+                    <svg viewBox="0 0 150 150" xmlns="http://www.w3.org/2000/svg">
+                        <g transform="translate(75, 75)">
+                            <path d="M0,-40 L0,20" stroke="#000" stroke-width="1" fill="none" />
+                            <path d="M0,-40 C-30,-20 -20,10 0,20 C20,10 30,-20 0,-40" stroke="#000" stroke-width="1" fill="none" />
+                        </g>
+                        <text x="75" y="120" text-anchor="middle" font-family="serif" font-size="12" fill="#000">Simple Leaf</text>
+                    </svg>
                 </div>
                 <div class="gallery-item">
-                    <img src="/api/placeholder/150/150" alt="Abstract wave logo">
-                    <p>Wave Motion</p>
+                    <svg viewBox="0 0 150 150" xmlns="http://www.w3.org/2000/svg">
+                        <g transform="translate(75, 75)">
+                            <path d="M-50,0 C-35,-10 -15,10 0,0 C15,-10 35,10 50,0" stroke="#000" stroke-width="1" fill="none" />
+                            <path d="M-50,15 C-35,5 -15,25 0,15 C15,5 35,25 50,15" stroke="#000" stroke-width="1" fill="none" />
+                        </g>
+                        <text x="75" y="120" text-anchor="middle" font-family="serif" font-size="12" fill="#000">Wave Motion</text>
+                    </svg>
                 </div>
                 <div class="gallery-item">
-                    <img src="/api/placeholder/150/150" alt="Geometric mountain logo">
-                    <p>Mountain Peak</p>
+                    <svg viewBox="0 0 150 150" xmlns="http://www.w3.org/2000/svg">
+                        <g transform="translate(75, 75)">
+                            <path d="M-45,25 L-15,-25 L15,15 L45,-15" stroke="#000" stroke-width="1" fill="none" />
+                        </g>
+                        <text x="75" y="120" text-anchor="middle" font-family="serif" font-size="12" fill="#000">Mountain Peak</text>
+                    </svg>
                 </div>
                 <!-- Second Row -->
                 <div class="gallery-item">
-                    <img src="/api/placeholder/150/150" alt="Minimalist leaf logo">
-                    <p>Simple Leaf</p>
+                    <svg viewBox="0 0 150 150" xmlns="http://www.w3.org/2000/svg">
+                        <g transform="translate(75, 75)">
+                            <circle cx="0" cy="0" r="30" stroke="#000" stroke-width="1" fill="none" />
+                            <circle cx="0" cy="0" r="20" stroke="#000" stroke-width="1" fill="none" />
+                            <line x1="-30" y1="0" x2="30" y2="0" stroke="#000" stroke-width="1" />
+                            <line x1="0" y1="-30" x2="0" y2="30" stroke="#000" stroke-width="1" />
+                        </g>
+                        <text x="75" y="120" text-anchor="middle" font-family="serif" font-size="12" fill="#000">Circle Pattern</text>
+                    </svg>
                 </div>
                 <div class="gallery-item">
-                    <img src="/api/placeholder/150/150" alt="Circle dot pattern logo">
-                    <p>Circle Pattern</p>
+                    <svg viewBox="0 0 150 150" xmlns="http://www.w3.org/2000/svg">
+                        <g transform="translate(75, 75)">
+                            <path d="M-25,-25 C0,-35 25,-10 25,15 C10,35 -15,25 -25,-25" stroke="#000" stroke-width="1" fill="none" />
+                        </g>
+                        <text x="75" y="120" text-anchor="middle" font-family="serif" font-size="12" fill="#000">Abstract Shape</text>
+                    </svg>
                 </div>
                 <div class="gallery-item">
-                    <img src="/api/placeholder/150/150" alt="Line art face logo">
-                    <p>Line Face</p>
+                    <svg viewBox="0 0 150 150" xmlns="http://www.w3.org/2000/svg">
+                        <g transform="translate(75, 75)">
+                            <circle cx="0" cy="-10" r="20" stroke="#000" stroke-width="1" fill="none" />
+                            <line x1="-10" y1="10" x2="10" y2="10" stroke="#000" stroke-width="1" />
+                            <line x1="-5" y1="20" x2="5" y2="20" stroke="#000" stroke-width="1" />
+                        </g>
+                        <text x="75" y="120" text-anchor="middle" font-family="serif" font-size="12" fill="#000">Line Face</text>
+                    </svg>
                 </div>
             </div>
             
@@ -220,7 +368,7 @@
             </div>
         </section>
         
-        <!-- Logo Generator Section - Now Second -->
+        <!-- Logo Generator Section -->
         <section class="logo-generator">
             <h2>Generate Your Logo</h2>
             <p>Describe your brand or concept to create a unique minimalist line-style logo.</p>
@@ -236,14 +384,38 @@
                     <textarea id="description" rows="4" required placeholder="Describe your brand, concept, or the symbolism you want in your logo"></textarea>
                 </div>
                 
+                <!-- Style Selection -->
                 <div class="form-group">
-                    <label for="style">Style Preference</label>
-                    <select id="style">
-                        <option value="minimal">Ultra Minimal</option>
-                        <option value="handdrawn">Hand-drawn Feel</option>
-                        <option value="geometric">Geometric</option>
-                        <option value="abstract">Abstract</option>
-                    </select>
+                    <label>Style Preference</label>
+                    <div class="style-options">
+                        <div class="style-option selected" data-style="minimal">
+                            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="50" cy="50" r="30" stroke="#000" stroke-width="1" fill="none" />
+                            </svg>
+                            <p>Ultra Minimal</p>
+                        </div>
+                        <div class="style-option" data-style="handdrawn">
+                            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M20,50 C30,30 70,30 80,50 C70,70 30,70 20,50" stroke="#000" stroke-width="2" fill="none" />
+                            </svg>
+                            <p>Hand-drawn</p>
+                        </div>
+                        <div class="style-option" data-style="geometric">
+                            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="30" y="30" width="40" height="40" stroke="#000" stroke-width="1.5" fill="none" />
+                                <circle cx="50" cy="50" r="25" stroke="#000" stroke-width="1.5" fill="none" />
+                            </svg>
+                            <p>Geometric</p>
+                        </div>
+                        <div class="style-option" data-style="abstract">
+                            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M30,30 C60,10 80,50 60,80 C20,90 10,50 30,30" stroke="#000" stroke-width="1.5" fill="none" />
+                            </svg>
+                            <p>Abstract</p>
+                        </div>
+                    </div>
+                    <!-- Hidden field to store the selected style -->
+                    <input type="hidden" id="style" value="minimal">
                 </div>
                 
                 <button type="submit">Generate Logo</button>
@@ -289,41 +461,305 @@
     </footer>
 
     <script>
+        // Style selection functionality
+        document.querySelectorAll('.style-option').forEach(option => {
+            option.addEventListener('click', function() {
+                // Remove previous selection
+                document.querySelectorAll('.style-option').forEach(el => {
+                    el.classList.remove('selected');
+                });
+                
+                // Add new selection
+                this.classList.add('selected');
+                
+                // Update hidden field value
+                document.getElementById('style').value = this.getAttribute('data-style');
+            });
+        });
+        
+        // Logo generator implementation
         document.getElementById('logo-form').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Show loading spinner
+            // Show loading animation
             document.getElementById('loading').style.display = 'block';
             document.getElementById('logo-result').innerHTML = '';
             
-            // Get form values
+            // Get form data
             const brandName = document.getElementById('brand-name').value;
             const description = document.getElementById('description').value;
             const style = document.getElementById('style').value;
             
-            // Simulate API call to AI service
+            // Generate logo (replaces simulated API call)
             setTimeout(function() {
-                // Hide loading spinner
+                // Hide loading animation
                 document.getElementById('loading').style.display = 'none';
                 
-                // Display result (in a real implementation, this would come from the AI service)
+                // Generate SVG logo based on user input
+                const logoSvg = generateLogoSvg(brandName, description, style);
+                
+                // Display result
                 const resultHTML = `
                     <h3>Your Generated Logo</h3>
-                    <img src="/api/placeholder/300/300" alt="${brandName} logo">
+                    <div class="logo-container">${logoSvg}</div>
                     <p>Generated based on: ${description}</p>
-                    <button class="download-btn">Download Logo</button>
+                    <button id="download-svg" class="download-btn">Download SVG</button>
+                    <button id="download-png" class="download-btn">Download PNG</button>
                 `;
                 
                 document.getElementById('logo-result').innerHTML = resultHTML;
-            }, 2000); // Simulate 2 second processing time
+                
+                // Add download functionality
+                setupDownloadButtons(brandName);
+            }, 1500); // 1.5 seconds generation time
         });
-        
-        // View More button functionality
+
+        // Generate SVG Logo function
+        function generateLogoSvg(brandName, description, style) {
+            // Parse description to determine logo type
+            const keywords = description.toLowerCase().split(/\s+/);
+            
+            // Detect keywords
+            const hasNature = keywords.some(word => ['nature', 'tree', 'leaf', 'flower', 'plant'].includes(word));
+            const hasWater = keywords.some(word => ['water', 'wave', 'ocean', 'sea'].includes(word));
+            const hasGeometric = keywords.some(word => ['geometric', 'circle', 'triangle', 'square'].includes(word));
+            const hasAbstract = keywords.some(word => ['abstract', 'modern'].includes(word));
+            const hasMountain = keywords.some(word => ['mountain', 'peak'].includes(word));
+            
+            // Set SVG dimensions and viewBox
+            const svgWidth = 300;
+            const svgHeight = 300;
+            
+            // Start SVG tag
+            let svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${svgWidth} ${svgHeight}" width="${svgWidth}" height="${svgHeight}">`;
+            
+            // Set line thickness and color based on style
+            let strokeWidth = style === 'minimal' ? 1 : (style === 'handdrawn' ? 2 : 1.5);
+            let strokeColor = '#000';
+            let fillColor = 'none';
+            
+            // Generate different types of logos based on description and style
+            if (hasNature || (style === 'handdrawn' && !hasWater && !hasGeometric && !hasAbstract && !hasMountain)) {
+                // Create tree or leaf logo
+                svg += `
+                    <g transform="translate(${svgWidth/2}, ${svgHeight/2})">
+                        <path d="M0,-80 L0,40" stroke="${strokeColor}" stroke-width="${strokeWidth}" fill="${fillColor}" />
+                        <path d="M0,-80 C-60,-40 -40,20 0,40 C40,20 60,-40 0,-80" stroke="${strokeColor}" stroke-width="${strokeWidth}" fill="${fillColor}" />
+                    </g>
+                `;
+            } else if (hasWater) {
+                // Create wave logo
+                svg += `
+                    <g transform="translate(${svgWidth/2}, ${svgHeight/2})">
+                        <path d="M-100,0 C-70,-20 -30,20 0,0 C30,-20 70,20 100,0" stroke="${strokeColor}" stroke-width="${strokeWidth}" fill="${fillColor}" />
+                        <path d="M-100,30 C-70,10 -30,50 0,30 C30,10 70,50 100,30" stroke="${strokeColor}" stroke-width="${strokeWidth}" fill="${fillColor}" />
+                    </g>
+                `;
+            } else if (hasMountain) {
+                // Create mountain logo
+                svg += `
+                    <g transform="translate(${svgWidth/2}, ${svgHeight/2})">
+                        <path d="M-90,50 L-30,-50 L30,30 L90,-30" stroke="${strokeColor}" stroke-width="${strokeWidth}" fill="${fillColor}" />
+                    </g>
+                `;
+            } else if (hasGeometric || style === 'geometric') {
+                // Create geometric logo
+                svg += `
+                    <g transform="translate(${svgWidth/2}, ${svgHeight/2})">
+                        <circle cx="0" cy="0" r="60" stroke="${strokeColor}" stroke-width="${strokeWidth}" fill="${fillColor}" />
+                        <circle cx="0" cy="0" r="40" stroke="${strokeColor}" stroke-width="${strokeWidth}" fill="${fillColor}" />
+                        <line x1="-60" y1="0" x2="60" y2="0" stroke="${strokeColor}" stroke-width="${strokeWidth}" />
+                        <line x1="0" y1="-60" x2="0" y2="60" stroke="${strokeColor}" stroke-width="${strokeWidth}" />
+                    </g>
+                `;
+            } else if (hasAbstract || style === 'abstract') {
+                // Create abstract logo
+                svg += `
+                    <g transform="translate(${svgWidth/2}, ${svgHeight/2})">
+                        <path d="M-50,-50 C0,-70 50,-20 50,30 C20,70 -30,50 -50,-50" stroke="${strokeColor}" stroke-width="${strokeWidth}" fill="${fillColor}" />
+                    </g>
+                `;
+            } else {
+                // Default - create a minimalist logo
+                svg += `
+                    <g transform="translate(${svgWidth/2}, ${svgHeight/2})">
+                        <circle cx="0" cy="-20" r="40" stroke="${strokeColor}" stroke-width="${strokeWidth}" fill="${fillColor}" />
+                        <line x1="-20" y1="20" x2="20" y2="20" stroke="${strokeColor}" stroke-width="${strokeWidth}" />
+                        <line x1="-10" y1="40" x2="10" y2="40" stroke="${strokeColor}" stroke-width="${strokeWidth}" />
+                    </g>
+                `;
+            }
+            
+            // Add brand name
+            if (brandName) {
+                // Adjust font size based on character length
+                const fontSize = Math.max(12, Math.min(24, 200 / brandName.length));
+                svg += `
+                    <text x="${svgWidth/2}" y="${svgHeight - 50}" 
+                          text-anchor="middle" 
+                          font-family="'Times New Roman', serif" 
+                          font-size="${fontSize}" 
+                          fill="${strokeColor}">
+                        ${brandName}
+                    </text>
+                `;
+            }
+            
+            // End SVG tag
+            svg += '</svg>';
+            
+            return svg;
+        }
+
+        // Setup download buttons functionality
+        function setupDownloadButtons(brandName) {
+            // SVG download
+            document.getElementById('download-svg').addEventListener('click', function() {
+                const svgData = document.querySelector('.logo-container svg').outerHTML;
+                downloadFile(svgData, `${brandName}-logo.svg`, 'image/svg+xml');
+            });
+            
+            // PNG download
+            document.getElementById('download-png').addEventListener('click', function() {
+                const svgElement = document.querySelector('.logo-container svg');
+                const canvas = document.createElement('canvas');
+                const ctx = canvas.getContext('2d');
+                
+                // Set canvas size
+                canvas.width = svgElement.width.baseVal.value;
+                canvas.height = svgElement.height.baseVal.value;
+                
+                // Create Image object
+                const image = new Image();
+                image.onload = function() {
+                    // Draw image to canvas
+                    ctx.drawImage(image, 0, 0);
+                    
+                    // Convert to PNG and download
+                    canvas.toBlob(function(blob) {
+                        const url = URL.createObjectURL(blob);
+                        const a = document.createElement('a');
+                        a.href = url;
+                        a.download = `${brandName}-logo.png`;
+                        document.body.appendChild(a);
+                        a.click();
+                        document.body.removeChild(a);
+                        URL.revokeObjectURL(url);
+                    });
+                };
+                
+                // Convert SVG to DataURL
+                const svgData = new XMLSerializer().serializeToString(svgElement);
+                const svgBlob = new Blob([svgData], {type: 'image/svg+xml;charset=utf-8'});
+                const url = URL.createObjectURL(svgBlob);
+                
+                image.src = url;
+            });
+        }
+
+        // Generic file download function
+        function downloadFile(data, fileName, mimeType) {
+            const blob = new Blob([data], {type: mimeType});
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = fileName;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        // Set up "View More" button functionality
         document.querySelector('.view-more button').addEventListener('click', function() {
-            alert('Gallery page would open with more logo examples');
-            // In a real implementation, this would navigate to a gallery page
-            // window.location.href = '/gallery';
+            // Show more logo examples
+            showExpandedGallery();
         });
+
+        // Expanded gallery functionality
+        function showExpandedGallery() {
+            // Create modal
+            const modal = document.createElement('div');
+            modal.className = 'gallery-modal';
+            
+            // Add close button
+            const closeBtn = document.createElement('button');
+            closeBtn.textContent = 'Close';
+            closeBtn.className = 'close-btn';
+            closeBtn.addEventListener('click', function() {
+                document.body.removeChild(modal);
+            });
+            
+            // Create gallery content
+            const galleryContent = document.createElement('div');
+            galleryContent.className = 'gallery-content';
+            
+            // Add title
+            const title = document.createElement('h2');
+            title.textContent = 'Logo Gallery';
+            title.style.textAlign = 'center';
+            title.style.marginBottom = '30px';
+            galleryContent.appendChild(title);
+            
+            // Create gallery grid
+            const grid = document.createElement('div');
+            grid.className = 'gallery-grid';
+            
+            // Add example logos
+            const exampleLogos = [
+                { name: 'Leaf Logo', type: 'hasNature' },
+                { name: 'Wave Logo', type: 'hasWater' },
+                { name: 'Mountain Logo', type: 'hasMountain' },
+                { name: 'Geometric Logo', type: 'hasGeometric' },
+                { name: 'Abstract Logo', type: 'hasAbstract' },
+                { name: 'Minimal Logo', type: 'default' },
+                { name: 'Circle Logo', type: 'hasGeometric' },
+                { name: 'Line Logo', type: 'hasAbstract' },
+                { name: 'Square Logo', type: 'hasGeometric' },
+                { name: 'Droplet Logo', type: 'hasWater' },
+                { name: 'Tree Logo', type: 'hasNature' },
+                { name: 'Modern Logo', type: 'hasAbstract' }
+            ];
+            
+            // Generate gallery items
+            exampleLogos.forEach(logo => {
+                const item = document.createElement('div');
+                item.style.border = '1px solid #ddd';
+                item.style.padding = '20px';
+                item.style.textAlign = 'center';
+                
+                // Use the same logo generation function to create SVG
+                let svg;
+                if (logo.type === 'hasNature') {
+                    svg = generateLogoSvg(logo.name, 'nature leaf', 'minimal');
+                } else if (logo.type === 'hasWater') {
+                    svg = generateLogoSvg(logo.name, 'water wave', 'minimal');
+                } else if (logo.type === 'hasMountain') {
+                    svg = generateLogoSvg(logo.name, 'mountain peak', 'minimal');
+                } else if (logo.type === 'hasGeometric') {
+                    svg = generateLogoSvg(logo.name, 'geometric', 'geometric');
+                } else if (logo.type === 'hasAbstract') {
+                    svg = generateLogoSvg(logo.name, 'abstract', 'abstract');
+                } else {
+                    svg = generateLogoSvg(logo.name, '', 'minimal');
+                }
+                
+                item.innerHTML = svg;
+                
+                const name = document.createElement('p');
+                name.textContent = logo.name;
+                name.style.marginTop = '10px';
+                item.appendChild(name);
+                
+                grid.appendChild(item);
+            });
+            
+            galleryContent.appendChild(grid);
+            modal.appendChild(galleryContent);
+            modal.appendChild(closeBtn);
+            
+            document.body.appendChild(modal);
+        }
     </script>
 </body>
 </html>
