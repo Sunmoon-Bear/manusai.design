@@ -1,0 +1,23 @@
+{
+  "name": "manusai-design",
+  "version": "1.0.0",
+  "description": "Minimalist AI Logo Design Tool",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "npx http-server -o"
+  },
+  "keywords": [
+    "logo",
+    "design",
+    "minimalist",
+    "svg",
+    "ai"
+  ],
+  "author": "ManusAI Design",
+  "license": "UNLICENSED",
+  "dependencies": {},
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+} 
